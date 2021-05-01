@@ -1,0 +1,67 @@
+.chatbox{
+  width: 450px;
+  height: 100vh;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbox > div{
+  background-color: #EEE;
+}
+
+.header{
+  border-bottom: 1px solid #CCC;
+  display:flex;
+  justify-content: center;
+  padding: 20px;
+  color: rgb(0, 64, 235);
+}
+
+.hamburger{
+  justify-self:end;
+}
+
+.body{
+  flex-grow:4;
+  display:flex;
+  flex-direction: column;
+}
+
+.profile-picture{
+  padding-top: 50px;
+  align-self:center;
+}
+
+.profile-picture-title{
+  display:flex;
+  justify-content: center;
+  font-size:30px;
+}
+
+.profile-picture-subtitle{
+  padding-top:10px;
+  color: #BBB;
+}
+
+
+.response-area{
+  display: flex;
+  justify-content:center;
+  padding-bottom:10px;
+}
+
+.response{
+  cursor: pointer;
+  margin-left:20px;
+  padding: 20px 40px;
+  border-radius: 7px;
+  background-color:rgb(1, 63, 254);
+  color: white;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
