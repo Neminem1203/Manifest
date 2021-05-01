@@ -5,7 +5,7 @@ import Chat from "./chat";
 import {henry_chats, answer_state, answer_prompt} from "./chat_logs";
 import DatePicker from 'react-date-picker';
 const waitImg = <img src="./Wait.png" alt="Typing..."/>
-const waitTimer = 1500;
+const waitTimer = 100;
 
 function App() {
   document.title = "Manifest";
@@ -47,23 +47,24 @@ function App() {
 
   if(!answered && chat_state === next_state){
         if(chat_state === 10){
-          choices = <>
-          <div className="response" key="confirm" onClick={()=>{
-            const dobString = dob.toDateString().slice(4);
-            let newAnswers = answers;
-            let newMessages = messages;
-            newAnswers.push(dobString);
-            newMessages.push([dobString, 1]);
-            newMessages.push([waitImg, 0]);
-            setAnswers(newAnswers);
-            setMessages(newMessages);
-            setNextState(answer_state[ns_ind+1]);
-            setNSInd(n => n+1);
-            setAnswered(true);
-            setCW(true);
-          }}>Confirm</div>
-          <DatePicker onChange={setDOB} value={dob} />
-          </>
+          choices = <div style={{display: "flex", flexDirection:"column"}}>
+            <DatePicker onChange={setDOB} value={dob} />
+
+            <div className="response" key="confirm" onClick={()=>{
+              const dobString = dob.toDateString().slice(4);
+              let newAnswers = answers;
+              let newMessages = messages;
+              newAnswers.push(dobString);
+              newMessages.push([dobString, 1]);
+              newMessages.push([waitImg, 0]);
+              setAnswers(newAnswers);
+              setMessages(newMessages);
+              setNextState(answer_state[ns_ind+1]);
+              setNSInd(n => n+1);
+              setAnswered(true);
+              setCW(true);
+            }}>Confirm</div>
+          </div>
         } else {
         choices = answer_prompt[next_state].map((choice, ind) =>{
           return <div className="response" key={`response${ind}`} onClick={()=>{
