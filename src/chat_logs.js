@@ -13,3 +13,15 @@ const henry_chats = [
     "What is your Date of Birth?",
     "Thank you for walking me through your preferences, this will make it much easier for us to choose the right destination for you"
 ]
+
+const answer_state = [3, 4, 8, 10,11]
+
+const answer_prompt = {
+    3: ["Yes", "No"],
+    4: ["Yes", "Not Really"],
+    8: ["Active", "Passive"],
+    10: ["Confirm", "Date of Birth"],
+    11: ["Continue"]
+}
+
+export {henry_chats, answer_state, answer_prompt}

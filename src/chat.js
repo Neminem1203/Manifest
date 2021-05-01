@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 
 
-const Chat = () => {
-    const [chatState, setChatState] = useState(0);
-        
-    return <>
-
-    </>
+const Chat = (props) => {
+    return props.messages.map((message_info,ind) => {
+        let [message, type] = message_info;
+        let cname = "henry bubble";
+        if(type === 1){
+            cname = "user bubble";
+        }
+        return <div className={cname} key={`message${ind}`}>{message}</div>
+    })
 }
 
 
