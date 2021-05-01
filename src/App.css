@@ -4,10 +4,11 @@
   max-height: 600px;
   display: flex;
   flex-direction: column;
+  margin: auto;
 }
 
 .chatbox > div{
-  background-color: #EEE;
+  background-color:  #F4F4F4;
 }
 
 .header{
@@ -15,7 +16,7 @@
   display:flex;
   justify-content: center;
   padding: 20px;
-  color: rgb(0, 64, 235);
+  color: #4E78F6;
 }
 
 .hamburger{
@@ -41,22 +42,22 @@
 
 .profile-picture-subtitle{
   padding-top:10px;
-  color: #BBB;
+  color:  #AAA;
 }
 
 
 .response-area{
   display: flex;
   justify-content:center;
-  padding-bottom:10px;
+  padding-bottom:20px;
 }
 
 .response{
   cursor: pointer;
-  margin-left:20px;
+  margin-left:25px;
   padding: 20px 40px;
   border-radius: 7px;
-  background-color:rgb(1, 63, 254);
+  background-color:#4E78F6;
   color: white;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
