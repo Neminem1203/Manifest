@@ -4,6 +4,9 @@ import ProfilePicture from "./profile_picture";
 import Chat from "./chat";
 import {henry_chats, answer_state, answer_prompt} from "./chat_logs";
 
+const waitImg = <img src="./Wait.png"/>
+const waitTimer = 35;
+
 function App() {
   document.title = "Manifest";
   let [chat_state, setCS] = useState(0) // chat state
@@ -13,23 +16,25 @@ function App() {
   let [answers, setAnswers] = useState([]); // array of answers
   let [ns_ind, setNSInd] = useState(0);
   let [next_state, setNextState] = useState(answer_state[ns_ind]);// checking for the next answer state
-  let [messages, setMessages] = useState([]);
+  let [messages, setMessages] = useState([[waitImg, 0]]);
   let choices = <></>;
 
   useEffect(()=>{
+    let newMessages = messages;
     const chat_timer = setInterval(()=>{
         console.log(chat_state, next_state, answers);
-        let newMessages = messages;
+        messages.pop();
         newMessages.push([henry_chats[chat_state], 0]);
         setMessages(newMessages)
         setCS(c => c+1);
         setCW(false);
-      }, 1000)
+      }, henry_chats[chat_state].length*waitTimer)
     
     if(!(chat_wait && answered) || next_state === undefined){
       clearInterval(chat_timer);
       if(chat_state !== next_state){
         setCW(true);
+        newMessages.push([waitImg, 0])
       } else {
         setAnswered(false);
       }
@@ -45,6 +50,7 @@ function App() {
             answers.push(choice);
             let newMessages = messages;
             newMessages.push([choice, 1]);
+            newMessages.push([waitImg, 0]);
             setMessages(newMessages);
             setAnswers(newAnswers);
             setNextState(answer_state[ns_ind+1]);
