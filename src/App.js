@@ -59,17 +59,18 @@ function App() {
   }
 
   let profilePicture = <ProfilePicture />
+  let bodyStyle = {}
   if(chat_state > 3){
     profilePicture = <></>
+    bodyStyle = {overflowY: "scroll"}
   }
-        
 
   return (
     <div className="chatbox">
       <div className="header">
         <div><b>Manifest</b></div>
       </div>
-      <div className="body">
+      <div className="body" style={bodyStyle}>
         {profilePicture}
         <Chat messages={messages}/>  
       </div>
