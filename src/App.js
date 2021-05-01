@@ -4,8 +4,8 @@ import ProfilePicture from "./profile_picture";
 import Chat from "./chat";
 import {henry_chats, answer_state, answer_prompt} from "./chat_logs";
 
-const waitImg = <img src="./Wait.png"/>
-const waitTimer = 35;
+const waitImg = <img src="./Wait.png" alt="Typing..."/>
+const waitTimer = 1500;
 
 function App() {
   document.title = "Manifest";
@@ -28,7 +28,7 @@ function App() {
         setMessages(newMessages)
         setCS(c => c+1);
         setCW(false);
-      }, henry_chats[chat_state].length*waitTimer)
+      }, waitTimer)
     
     if(!(chat_wait && answered) || next_state === undefined){
       clearInterval(chat_timer);
@@ -43,7 +43,7 @@ function App() {
     return () => clearInterval(chat_timer);
   }, [chat_wait])
 
-  if(!answered && chat_state == next_state){
+  if(!answered && chat_state === next_state){
         choices = answer_prompt[next_state].map((choice, ind) =>{
           return <div className="response" key={`response${ind}`} onClick={()=>{
             let newAnswers = answers;
