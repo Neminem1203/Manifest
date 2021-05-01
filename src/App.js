@@ -1,5 +1,7 @@
 import './App.css';
 import ProfilePicture from "./profile_picture";
+import Chat from "./chat";
+import Response from "./response";
 
 function App() {
   document.title = "Manifest";
@@ -10,10 +12,10 @@ function App() {
       </div>
       <div className="body">
         <ProfilePicture />
+        <Chat />
       </div>
       <div className="response-area">
-        <div className="response">Response1</div>
-        <div className="response">Response2</div>
+        <Response choices={["Test1", "test2"]}/>
       </div>
     </div>
   );

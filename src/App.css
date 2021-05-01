@@ -17,6 +17,12 @@
   justify-content: center;
   padding: 20px;
   color: #4E78F6;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .hamburger{
@@ -32,6 +38,12 @@
 .profile-picture{
   padding-top: 50px;
   align-self:center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .profile-picture-title{
@@ -54,7 +66,9 @@
 
 .response{
   cursor: pointer;
-  margin-left:25px;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 10px;
   padding: 20px 40px;
   border-radius: 7px;
   background-color:#4E78F6;
@@ -65,4 +79,19 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.henry-bubble{
+  border-radius:10px;
+  font-size: 15px;
+  background-color:#AAA;
+  color: #000;
+}
+
+
+.user-bubble{
+  border-radius:10px;
+  font-size:15px;
+  background-color: #4E78F6;
+  color: #FFF;
 }
