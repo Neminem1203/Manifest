@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import ProfilePicture from "./profile_picture";
 import Chat from "./chat";
 import {henry_chats, answer_state, answer_prompt} from "./chat_logs";
-
+import DatePicker from 'react-date-picker';
 const waitImg = <img src="./Wait.png" alt="Typing..."/>
 const waitTimer = 1500;
 
@@ -17,6 +17,8 @@ function App() {
   let [ns_ind, setNSInd] = useState(0);
   let [next_state, setNextState] = useState(answer_state[ns_ind]);// checking for the next answer state
   let [messages, setMessages] = useState([[waitImg, 0]]);
+  // Date of Birth value
+  const [dob, setDOB] = useState(new Date());
   let choices = <></>;
 
   useEffect(()=>{
@@ -44,6 +46,25 @@ function App() {
   }, [chat_wait])
 
   if(!answered && chat_state === next_state){
+        if(chat_state === 10){
+          choices = <>
+          <div className="response" key="confirm" onClick={()=>{
+            const dobString = dob.toDateString().slice(4);
+            let newAnswers = answers;
+            let newMessages = messages;
+            newAnswers.push(dobString);
+            newMessages.push([dobString, 1]);
+            newMessages.push([waitImg, 0]);
+            setAnswers(newAnswers);
+            setMessages(newMessages);
+            setNextState(answer_state[ns_ind+1]);
+            setNSInd(n => n+1);
+            setAnswered(true);
+            setCW(true);
+          }}>Confirm</div>
+          <DatePicker onChange={setDOB} value={dob} />
+          </>
+        } else {
         choices = answer_prompt[next_state].map((choice, ind) =>{
           return <div className="response" key={`response${ind}`} onClick={()=>{
             let newAnswers = answers;
@@ -60,7 +81,9 @@ function App() {
           }}>
             {choice}
           </div>
+
         })
+      }
 
   }
 

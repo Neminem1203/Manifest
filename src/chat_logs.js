@@ -1,4 +1,4 @@
-
+import DatePicker from 'react-date-picker';
 
 const henry_chats = [
     <p>Hi! I'm Henry, your personal trainer specialist.</p>,
@@ -20,7 +20,7 @@ const answer_prompt = {
     3: ["Yes", "No"],
     4: ["Yes", "Not Really"],
     8: ["Active", "Passive"],
-    10: ["Confirm", "Date of Birth"],
+    10: ["Confirm", "Date Of Birth"],
     11: ["Continue"]
 }
 
